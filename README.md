@@ -281,9 +281,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
     - **Ejemplo:**  
 
       `sup(A)=0.25`, `sup(B)=0.4`, `sup(C)=0.3`, `sup(A,B,C)=0.15`
-      `leverage = 0.15 - (0.25*0.4*0.3) = 0.15 - 0.03 = 0.12`
-      →  
-      `sum_triple_leverage = 0.12  (si solo hay un trío frecuente)`
+      `leverage = 0.15 - (0.25*0.4*0.3) = 0.15 - 0.03 = 0.12` → `sum_triple_leverage = 0.12  (si solo hay un trío frecuente)`
 
 
 15. **max_triple_lift** / **avg_triple_lift**  
@@ -311,8 +309,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
       = \frac{\text{freq\_triple\_count}}
              {\binom{\text{cnt\_rated}}{2}}
       ```  
-    - **Ejemplo:** `cnt_rated = 3` → 3 tríos posibles, si 2 son frecuentes →  
-      `triple_coverage = 2/3 ≈ 0.67`
+    - **Ejemplo:** `cnt_rated = 3` → 3 tríos posibles, si 2 son frecuentes →  `triple_coverage = 2/3 ≈ 0.67`
 ---
 
 ---
