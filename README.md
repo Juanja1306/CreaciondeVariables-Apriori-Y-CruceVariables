@@ -158,40 +158,89 @@ Aquí agrupamos las 21 variables en tres bloques y utilizamos **ejemplos y analo
 Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
 
 3. **freq_pair_count**  
-   Número de pares frecuentes (soporte ≥ 0.2).
+- **Qué mide:** Cantidad de pares formados entre la película objetivo (A) y cada otra película vista por el usuario que son “frecuentes” en todo el dataset.  
+- **Cómo funciona:**  
+  - Se forman pares (A, X) para cada película X en el historial del usuario.  
+  - Se cuenta cuántos de esos pares tienen soporte ≥ 0.2.  
+- **Ejemplo:** si el usuario vio B, C, D, E, F (5 pares posibles) y solo (A,B) y (A,C) cumplen soporte ≥ 0.2 → `freq_pair_count = 2`.
 
 4. **freq_pair_support_sum**  
-   Suma de soportes de cada par.  
-   _Ejemplo:_ `sup(A,B)=0.1`, `sup(A,C)=0.3` → `0.4`.
+- **Qué mide:** Suma de los valores de soporte de cada par frecuente (A, X).  
+- **Cálculo:**  
+  \[
+    	ext{freq\_pair\_support\_sum} = \sum_{	ext{pares frecuentes}} 	ext{sup}(A, X)
+  \]  
+- **Ejemplo:** si `sup(A,B)=0.1` y `sup(A,C)=0.3` → `freq_pair_support_sum = 0.1 + 0.3 = 0.4`.
 
 5. **max_pair_support** / **min_pair_support** / **avg_pair_support**  
-   Máximo, mínimo y promedio de esos soportes.
+- **Qué miden:**  
+  - **`max_pair_support`:** soporte máximo entre todos los pares frecuentes.  
+  - **`min_pair_support`:** soporte mínimo.  
+  - **`avg_pair_support`:** soporte promedio.  
+- **Cálculos:**  
+  \[
+    	ext{max} = \max(	ext{sup}(A,X)),\quad
+    	ext{min} = \min(	ext{sup}(A,X)),\quad
+    	ext{avg} = rac{\sum 	ext{sup}(A,X)}{	ext{\# pares}}
+  \]  
+- **Ejemplo:** con soportes [0.1, 0.3] →  
+  - `max_pair_support = 0.3`  
+  - `min_pair_support = 0.1`  
+  - `avg_pair_support = (0.1 + 0.3)/2 = 0.2`.
+
 
 6. **sum_pair_leverage**  
-   Suma de palancas:  
-   `leverage = sup(pair) – sup(target)·sup(other)`.  
-   _Ejemplo:_  
-   - (A,B): `0.1 – (0.25·0.4) = 0.0`  
-   - (A,C): `0.3 – (0.25·0.2) = 0.25`  
-   → `sum_pair_leverage = 0.25`.
+- **Qué mide:** Suma de las **palancas** (leverage) de cada par frecuente, reflejando cuán inesperada es la asociación comparada con independencia.  
+- **Fórmula de leverage:**  
+  \[
+    	ext{leverage} = 	ext{sup}(A,X) 
+      - igl(	ext{sup}(A) 	imes 	ext{sup}(X)igr)
+  \]  
+- **Ejemplo:**  
+  - `sup(A)=0.25`, `sup(B)=0.4`, `sup(A,B)=0.1` →  
+    \(\,0.1 - (0.25\cdot0.4) = 0.0\)  
+  - `sup(C)=0.2`, `sup(A,C)=0.3` →  
+    \(\,0.3 - (0.25\cdot0.2) = 0.25\)  
+  → `sum_pair_leverage = 0.0 + 0.25 = 0.25`.
 
 7. **max_pair_leverage**  
-   El mayor leverage (0.25 en el ejemplo).
+- **Qué mide:** El valor de **leverage** más alto entre todos los pares frecuentes.  
+- **Ejemplo:** en el caso anterior, `max_pair_leverage = 0.25`.
+
 
 8. **max_pair_confidence**  
-   Máxima confianza:  
-   `sup(pair)/sup(target)`.  
-   Ejemplo A,C: `0.3/0.25 = 1.2`.
+- **Qué mide:** La confianza máxima de la regla A → X, expresada como:  
+  \[
+    	ext{confidence}(A 	o X) 
+    = rac{	ext{sup}(A,X)}{	ext{sup}(A)}.
+  \]  
+- **Ejemplo:** para (A,C): `0.3/0.25 = 1.2`.
+
 
 9. **avg_pair_lift** / **max_pair_lift**  
-   Lift medio y máximo:  
-   `sup(pair)/(sup(target)·sup(other))`.  
-   Ejemplo A,C: `0.3/(0.25·0.2)=6`.
+- **Qué miden:**  
+  - **`avg_pair_lift`:** media de todos los lifts.  
+  - **`max_pair_lift`:** lift máximo.  
+- **Fórmula de lift:**  
+  \[
+    	ext{lift}(A,X)
+    = rac{	ext{sup}(A,X)}
+           {	ext{sup}(A)	imes	ext{sup}(X)}.
+  \]  
+- **Ejemplo:**  
+  \(\,	ext{lift}(A,C) = 0.3/(0.25\cdot0.2)=6.\)
+
 
 10. **weighted_avg_rating_pair**  
-    Pondera la nota del usuario por el soporte:  
-    `(sum sup(pair)·rating_other)/sum sup(pair)`.  
-    Ejemplo B=3,C=5: `(0.1·3 + 0.3·5)/0.4=4.5`.
+- **Qué mide:** Nota media que el usuario dio a las películas relacionadas, **ponderada** por la fuerza de cada asociación (sup(pair)).  
+- **Cálculo:**  
+  \[
+    rac{\sum (	ext{sup}(A,X)	imes 	ext{rating}(X))}
+         {\sum 	ext{sup}(A,X)}.
+  \]  
+- **Ejemplo:** si rating(B)=3, rating(C)=5, y soportes 0.1 y 0.3 →  
+  \(\,(0.1\cdot3 + 0.3\cdot5)/(0.1+0.3) = 4.5.\)
+
 
 ---
 
