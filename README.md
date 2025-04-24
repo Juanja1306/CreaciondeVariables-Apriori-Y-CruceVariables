@@ -239,8 +239,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
         2. Se cuenta cuántos de esos tríos tienen soporte ≥ 0.2.  
     - **Ejemplo:** si `cnt_rated = 3` (por ejemplo B, C, D) → 3 tríos posibles:  
       `(A,B,C)`, `(A,B,D)`, `(A,C,D)`.  
-      Si solo dos cumplen soporte ≥ 0.2 →  
-      `freq_triple_count = 2`
+      Si solo dos cumplen soporte ≥ 0.2 → `freq_triple_count = 2`
 
 12. **freq_triple_support_sum**  
     - **Qué mide:** Suma de los soportes de todos los tríos frecuentes `(A, o1, o2)`.  
@@ -250,8 +249,8 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
       = \sum_{\substack{\text{tríos frecuentes}}}
         \sup(A, o1, o2)
       ```  
-    - **Ejemplo:** si  
-      `sup(A,B,C) = 0.15` ; `sup(A,B,D) = 0.25`; →  `freq_triple_support_sum = 0.15 + 0.25 = 0.40`
+    - **Ejemplo:** si  `sup(A,B,C) = 0.15` ; `sup(A,B,D) = 0.25`:
+        `freq_triple_support_sum = 0.15 + 0.25 = 0.40`
 
 13. **avg_triple_support** / **max_triple_support**  
     - **Qué miden:**  
@@ -286,7 +285,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
 
       `leverage = 0.15 - (0.25*0.4*0.3) = 0.15 - 0.03 = 0.12`
 
-      → `sum_triple_leverage = 0.12  (si solo hay un trío frecuente)`
+      `sum_triple_leverage = 0.12  (si solo hay un trío frecuente)`
 
 
 15. **max_triple_lift** / **avg_triple_lift**  
