@@ -181,7 +181,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
   \[
     	ext{max} = \max(	ext{sup}(A,X)),\quad
     	ext{min} = \min(	ext{sup}(A,X)),\quad
-    	ext{avg} = rac{\sum 	ext{sup}(A,X)}{	ext{\# pares}}
+    	ext{avg} = rac{\sum 	ext{sup}(A,X)}{	ext{\# pares}}
   \]  
 - **Ejemplo:** con soportes [0.1, 0.3] →  
   - `max_pair_support = 0.3`  
