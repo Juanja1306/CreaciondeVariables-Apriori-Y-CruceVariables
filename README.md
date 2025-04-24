@@ -129,7 +129,7 @@ Aqui se describe las 21 variables (features) del archivo con menos RMSE `21Featu
     Cobertura de tríos: proporción de tríos frecuentes respecto al total  
     de tríos posibles del usuario:  
     ```math
-    `freq_triple_count / (cnt_rated choose 2)` (0.0 si `cnt_rated < 2`).
+    freq_triple_count / (cnt_rated choose 2) * (0.0 si cnt_rated < 2).
     ```
 
 
