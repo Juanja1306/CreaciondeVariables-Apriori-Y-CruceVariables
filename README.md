@@ -163,7 +163,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
         {N_{\text{pares}}},
     \end{aligned}
     ```
-    - **Ejemplo:** con soportes [0.1, 0.3] →  
+    - **Ejemplo:** con soportes `[0.1, 0.3]`:
         - `max_pair_support = 0.3`  
         - `min_pair_support = 0.1`  
         - `avg_pair_support = (0.1 + 0.3)/2 = 0.2`.
@@ -250,7 +250,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
         \sup(A, o1, o2)
       ```  
     - **Ejemplo:** si  `sup(A,B,C) = 0.15` ; `sup(A,B,D) = 0.25`:
-    
+
         `freq_triple_support_sum = 0.15 + 0.25 = 0.40`
 
 13. **avg_triple_support** / **max_triple_support**  
