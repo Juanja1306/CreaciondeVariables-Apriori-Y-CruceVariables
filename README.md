@@ -250,6 +250,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
         \sup(A, o1, o2)
       ```  
     - **Ejemplo:** si  `sup(A,B,C) = 0.15` ; `sup(A,B,D) = 0.25`:
+    
         `freq_triple_support_sum = 0.15 + 0.25 = 0.40`
 
 13. **avg_triple_support** / **max_triple_support**  
