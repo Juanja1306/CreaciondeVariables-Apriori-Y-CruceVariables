@@ -247,7 +247,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
        {\displaystyle\sum_{X}\sup(A,X)}
     ```
     - **Ejemplo:** 
-    ```bash
+    ```math
     \text{weighted\_avg\_rating\_pair}(A)
     = \frac{0.1 \times 3 \;+\; 0.3 \times 5}{0.1 + 0.3}
     = \frac{0.3 + 1.5}{0.4}
