@@ -142,9 +142,11 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - **Qué mide:** Suma de los valores de soporte de cada par frecuente (A, X).  
     - **Cálculo:**
         ```math
-        \text{freq\_pair\_support\_sum}
-        = \sum_{\substack{\text{pares frecuentes}}}
-        \sup(A, X)
+        \begin{aligned}
+            \text{freq\_pair\_support\_sum}
+            = \sum_{\substack{\text{pares frecuentes}}}
+            \sup(A, X)
+        \end{aligned}
         ```
     - **Ejemplo:** si `sup(A,B)=0.1` y `sup(A,C)=0.3` → `freq_pair_support_sum = 0.1 + 0.3 = 0.4`.
 
@@ -172,16 +174,16 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - **Qué mide:** Suma de las **palancas** (leverage) de cada par frecuente, reflejando cuán inesperada es la asociación comparada con independencia.  
     - **Fórmula de leverage:** 
     ```math
-    \text{leverage}(A,X)
-    = \sup(A,X)
-    - \bigl[\sup(A)\cdot\sup(X)\bigr]
+        \text{leverage}(A,X)
+        = \sup(A,X)
+        - \bigl[\sup(A)\cdot\sup(X)\bigr]
     ``` 
     - **Ejemplo:**  
         - Cuando `sup(A) = 0.25`, `sup(B) = 0.4` y `sup(A,B) = 0.1`:  
-        $$\text{leverage}(A,B) \;=\; 0.1 \;-\; (0.25 \times 0.4) \;=\; 0$$
+        $$\text{leverage}(A,B) = 0.1 - (0.25 \times 0.4) = 0$$
 
         - Cuando `sup(C) = 0.2` y `sup(A,C) = 0.3`:  
-        $$\text{leverage}(A,C) \;=\; 0.3 \;-\; (0.25 \times 0.2) \;=\; 0.25$$
+        $$\text{leverage}(A,C) = 0.3 - (0.25 \times 0.2) = 0.25$$
 
         - Entonces, la suma de las palancas es:  
         $$\sum_{\text{pares}} \text{leverage} = 0 + 0.25 = 0.25$$
