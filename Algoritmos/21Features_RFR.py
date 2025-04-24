@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor, HistGradientBoostingRegresso
 from sklearn.metrics import mean_squared_error
 
 # 1. Carga del dataset
-df = pd.read_csv('ratings2comoML.csv')
+df = pd.read_csv(r'C:\Users\juanj\Desktop\CreaciondeVariables-Apriori-Y-CruceVariables\CSVs\ratings2comoML.csv')
 
 # 2. Usuario-por-película y soportes
 total_users = df['userId'].nunique()
