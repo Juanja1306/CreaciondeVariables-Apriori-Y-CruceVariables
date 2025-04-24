@@ -251,7 +251,7 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
         \sup(A, o1, o2)
       ```  
     - **Ejemplo:** si  
-      `sup(A,B,C) = 0.15` ; `sup(A,B,D) = 0.25` →  `freq_triple_support_sum = 0.15 + 0.25 = 0.40`
+      `sup(A,B,C) = 0.15` ; `sup(A,B,D) = 0.25`; →  `freq_triple_support_sum = 0.15 + 0.25 = 0.40`
 
 13. **avg_triple_support** / **max_triple_support**  
     - **Qué miden:**  
@@ -266,7 +266,9 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
         &= \max_{(o1,o2)} \!\bigl\{\sup(A,o1,o2)\bigr\}.
       \end{aligned}
       ```  
-    - **Ejemplo:** con soportes `[0.15, 0.25]` → `avg_triple_support = (0.15 + 0.25) / 2 = 0.20`
+    - **Ejemplo:** con soportes `[0.15, 0.25]`:
+    
+      `avg_triple_support = (0.15 + 0.25) / 2 = 0.20`
 
       `max_triple_support = 0.25`
 
@@ -281,7 +283,10 @@ Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películ
     - **Ejemplo:**  
 
       `sup(A)=0.25`, `sup(B)=0.4`, `sup(C)=0.3`, `sup(A,B,C)=0.15`
-      `leverage = 0.15 - (0.25*0.4*0.3) = 0.15 - 0.03 = 0.12` → `sum_triple_leverage = 0.12  (si solo hay un trío frecuente)`
+
+      `leverage = 0.15 - (0.25*0.4*0.3) = 0.15 - 0.03 = 0.12`
+
+      → `sum_triple_leverage = 0.12  (si solo hay un trío frecuente)`
 
 
 15. **max_triple_lift** / **avg_triple_lift**  
