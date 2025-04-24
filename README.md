@@ -135,7 +135,7 @@ Aqui se describe las 21 variables (features) del archivo con menos RMSE `21Featu
 
 # Explicación Detallada de las 21 Features de Apriori
 
-Esta guía agrupa las 21 variables en tres bloques y utiliza ejemplos y analogías para clarificar cada una.
+Aquí agrupamos las 21 variables en tres bloques y utilizamos **ejemplos y analogías** para una mayor comprension.
 
 ---
 
