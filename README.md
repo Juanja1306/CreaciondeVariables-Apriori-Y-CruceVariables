@@ -181,7 +181,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
         - **`avg_pair_support`:** soporte promedio.  
     - **Cálculos:**  
     ```math
-        \[
+        
     \begin{aligned}
     \text{max\_pair\_support} \; &=\; \max_{(A,X)} \bigl\{\sup(A,X)\bigr\}, \\[6pt]
     \text{min\_pair\_support} \; &=\; \min_{(A,X)} \bigl\{\sup(A,X)\bigr\}, \\[6pt]
@@ -189,7 +189,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     \frac{\displaystyle\sum_{(A,X)} \sup(A,X)}
         {N_{\text{pares}}},
     \end{aligned}
-    \]
+    
     ```
 
 6. **sum_pair_leverage**  
