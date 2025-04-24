@@ -175,7 +175,22 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - **Ejemplo:** si `sup(A,B)=0.1` y `sup(A,C)=0.3` → `freq_pair_support_sum = 0.1 + 0.3 = 0.4`.
 
 5. **max_pair_support** / **min_pair_support** / **avg_pair_support**  
-   Máximo, mínimo y promedio de esos soportes.
+    - **Qué miden:**  
+        - **`max_pair_support`:** soporte máximo entre todos los pares frecuentes.  
+        - **`min_pair_support`:** soporte mínimo.  
+        - **`avg_pair_support`:** soporte promedio.  
+    - **Cálculos:**  
+    ```math
+        \[
+    \begin{aligned}
+    \text{max\_pair\_support} \; &=\; \max_{(A,X)} \bigl\{\sup(A,X)\bigr\}, \\[6pt]
+    \text{min\_pair\_support} \; &=\; \min_{(A,X)} \bigl\{\sup(A,X)\bigr\}, \\[6pt]
+    \text{avg\_pair\_support} \; &=\; 
+    \frac{\displaystyle\sum_{(A,X)} \sup(A,X)}
+        {N_{\text{pares}}},
+    \end{aligned}
+    \]
+    ```
 
 6. **sum_pair_leverage**  
    Suma de palancas:  
