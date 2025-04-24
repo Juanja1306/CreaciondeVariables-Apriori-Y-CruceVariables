@@ -162,11 +162,15 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - **Cómo funciona:**  
         - Se forman pares (A, X) para cada película X en el historial del usuario.  
         - Se cuenta cuántos de esos pares tienen soporte ≥ 0.2.  
-- **Ejemplo:** si el usuario vio B, C, D, E, F (5 pares posibles) y solo (A,B) y (A,C) cumplen soporte ≥ 0.2 → `freq_pair_count = 2`.
+    - **Ejemplo:** si el usuario vio B, C, D, E, F (5 pares posibles) y solo (A,B) y (A,C) cumplen soporte ≥ 0.2 → `freq_pair_count = 2`.
 
 4. **freq_pair_support_sum**  
-   Suma de soportes de cada par.  
-   _Ejemplo:_ `sup(A,B)=0.1`, `sup(A,C)=0.3` → `0.4`.
+    - **Qué mide:** Suma de los valores de soporte de cada par frecuente (A, X).  
+    - **Cálculo:**
+        \[
+    	ext{freq\_pair\_support\_sum} = \sum_{	ext{pares frecuentes}} 	ext{sup}(A, X)
+        \]  
+    - **Ejemplo:** si `sup(A,B)=0.1` y `sup(A,C)=0.3` → `freq_pair_support_sum = 0.1 + 0.3 = 0.4`.
 
 5. **max_pair_support** / **min_pair_support** / **avg_pair_support**  
    Máximo, mínimo y promedio de esos soportes.
