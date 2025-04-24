@@ -198,32 +198,56 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - **Qué mide:** Suma de las **palancas** (leverage) de cada par frecuente, reflejando cuán inesperada es la asociación comparada con independencia.  
     - **Fórmula de leverage:** 
     ```math
-        \[
     \text{leverage}(A,X)
     = \sup(A,X)
     - \bigl[\sup(A)\cdot\sup(X)\bigr]
-    \]
-
     ``` 
+    - **Ejemplo:**  
+        - `sup(A)=0.25`, `sup(B)=0.4`, `sup(A,B)=0.1` →  
+            \(\,0.1 - (0.25\cdot0.4) = 0.0\)  
+        - `sup(C)=0.2`, `sup(A,C)=0.3` →  
+            \(\,0.3 - (0.25\cdot0.2) = 0.25\)  
+        → `sum_pair_leverage = 0.0 + 0.25 = 0.25`.
 
 7. **max_pair_leverage**  
-   El mayor leverage (0.25 en el ejemplo).
+    - **Qué mide:** El valor de **leverage** más alto entre todos los pares frecuentes.  
+    - **Ejemplo:** en el caso anterior, `max_pair_leverage = 0.25`.
 
 8. **max_pair_confidence**  
-   Máxima confianza:  
-   `sup(pair)/sup(target)`.  
-   Ejemplo A,C: `0.3/0.25 = 1.2`.
+    - **Qué mide:** La confianza máxima de la regla A → X, expresada como: 
+    ```math
+    \text{confidence}(A \to X)
+    = \frac{\sup(A,X)}{\sup(A)}.
+    ````
+    - **Ejemplo:** para (A,C): `0.3/0.25 = 1.2`.
 
 9. **avg_pair_lift** / **max_pair_lift**  
-   Lift medio y máximo:  
-   `sup(pair)/(sup(target)·sup(other))`.  
-   Ejemplo A,C: `0.3/(0.25·0.2)=6`.
+    - **Qué miden:**  
+        - **`avg_pair_lift`:** media de todos los lifts.  
+        - **`max_pair_lift`:** lift máximo.  
+    - **Fórmula de lift:**  
+    ```math
+    \text{lift}(A, X)
+    = \frac{\sup(A, X)}
+    {\sup(A)\times\sup(X)}.
+    ```
+    - **Ejemplo:**  
+    ```math
+    \text{lift}(A, C)
+    = \frac{0.3}{0.25 \times 0.2}
+    = 6
+    ```
 
 10. **weighted_avg_rating_pair**  
-    Pondera la nota del usuario por el soporte:  
-    `(sum sup(pair)·rating_other)/sum sup(pair)`.  
-    Ejemplo B=3,C=5: `(0.1·3 + 0.3·5)/0.4=4.5`.
-
+    - **Qué mide:** Nota media que el usuario dio a las películas relacionadas, **ponderada** por la fuerza de cada asociación (sup(pair)).  
+    - **Cálculo:**  
+    ```math
+    \text{weighted\_avg\_rating\_pair}(A)
+    = \frac{\displaystyle\sum_{X}\bigl[\sup(A,X)\times \text{rating}(X)\bigr]}
+       {\displaystyle\sum_{X}\sup(A,X)}
+    ```
+    - **Ejemplo:** si rating(B)=3, rating(C)=5, y soportes 0.1 y 0.3 →  
+  \(\,(0.1\cdot3 + 0.3\cdot5)/(0.1+0.3) = 4.5.\)
 ---
 
 ## 3. Variables de **tríos** (target + dos películas)
