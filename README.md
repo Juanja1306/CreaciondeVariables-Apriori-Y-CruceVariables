@@ -195,12 +195,16 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
         - `avg_pair_support = (0.1 + 0.3)/2 = 0.2`.
 
 6. **sum_pair_leverage**  
-   Suma de palancas:  
-   `leverage = sup(pair) – sup(target)·sup(other)`.  
-   _Ejemplo:_  
-   - (A,B): `0.1 – (0.25·0.4) = 0.0`  
-   - (A,C): `0.3 – (0.25·0.2) = 0.25`  
-   → `sum_pair_leverage = 0.25`.
+    - **Qué mide:** Suma de las **palancas** (leverage) de cada par frecuente, reflejando cuán inesperada es la asociación comparada con independencia.  
+    - **Fórmula de leverage:** 
+    ```math
+        \[
+    \text{leverage}(A,X)
+    = \sup(A,X)
+    - \bigl[\sup(A)\cdot\sup(X)\bigr]
+    \]
+
+    ``` 
 
 7. **max_pair_leverage**  
    El mayor leverage (0.25 en el ejemplo).
