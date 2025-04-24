@@ -177,11 +177,15 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - \bigl[\sup(A)\cdot\sup(X)\bigr]
     ``` 
     - **Ejemplo:**  
-        - `sup(A)=0.25`, `sup(B)=0.4`, `sup(A,B)=0.1` →  
-            \(\,0.1 - (0.25\cdot0.4) = 0.0\)  
-        - `sup(C)=0.2`, `sup(A,C)=0.3` →  
-            \(\,0.3 - (0.25\cdot0.2) = 0.25\)  
-        → `sum_pair_leverage = 0.0 + 0.25 = 0.25`.
+        - Cuando `sup(A) = 0.25`, `sup(B) = 0.4` y `sup(A,B) = 0.1`:  
+        $$\text{leverage}(A,B) \;=\; 0.1 \;-\; (0.25 \times 0.4) \;=\; 0$$
+
+        - Cuando `sup(C) = 0.2` y `sup(A,C) = 0.3`:  
+        $$\text{leverage}(A,C) \;=\; 0.3 \;-\; (0.25 \times 0.2) \;=\; 0.25$$
+
+        - Entonces, la suma de las palancas es:  
+        $$\sum_{\text{pares}} \text{leverage} = 0 + 0.25 = 0.25$$
+
 
 7. **max_pair_leverage**  
     - **Qué mide:** El valor de **leverage** más alto entre todos los pares frecuentes.  
