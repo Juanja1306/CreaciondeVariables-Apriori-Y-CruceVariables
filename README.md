@@ -228,32 +228,107 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     = 4.5
     ```
 ---
-
 ## 3. Variables de **tríos** (target + dos películas)
 
-Formamos tríos como (A,B,C) con pares de películas del historial.
+Formamos tríos como `(A, o1, o2)` a partir de cada combinación de dos películas en el historial del usuario.
 
 11. **freq_triple_count**  
-    Número de tríos frecuentes (soporte ≥ 0.2).
+    - **Qué mide:** Número de tríos `(A, o1, o2)` en el historial del usuario que son “frecuentes” en el dataset (soporte ≥ 0.2).  
+    - **Cómo funciona:**  
+        1. Para cada par de películas `{o1, o2}` vistas por el usuario, se forma el trío `(A, o1, o2)`.  
+        2. Se cuenta cuántos de esos tríos tienen soporte ≥ 0.2.  
+    - **Ejemplo:** si `cnt_rated = 3` (por ejemplo B, C, D) → 3 tríos posibles:  
+      `(A,B,C)`, `(A,B,D)`, `(A,C,D)`.  
+      Si solo dos cumplen soporte ≥ 0.2 →  
+      ```text
+      freq_triple_count = 2
+      ```
 
 12. **freq_triple_support_sum**  
-    Suma de soportes de cada trío frecuente.
+    - **Qué mide:** Suma de los soportes de todos los tríos frecuentes `(A, o1, o2)`.  
+    - **Cálculo:**  
+      ```math
+      \text{freq\_triple\_support\_sum}
+      = \sum_{\substack{\text{tríos frecuentes}}}
+        \sup(A, o1, o2)
+      ```  
+    - **Ejemplo:** si  
+      ```
+      sup(A,B,C) = 0.15
+      sup(A,B,D) = 0.25
+      ```  
+      →  
+      ```text
+      freq_triple_support_sum = 0.15 + 0.25 = 0.40
+      ```
 
 13. **avg_triple_support** / **max_triple_support**  
-    Promedio y máximo de esos soportes.
+    - **Qué miden:**  
+        - **`avg_triple_support`:** soporte promedio de los tríos frecuentes.  
+        - **`max_triple_support`:** soporte máximo.  
+    - **Cálculos:**  
+      ```math
+      \begin{aligned}
+      \text{avg\_triple\_support}
+        &= \frac{\sum \sup(A, o1, o2)}{N_{\text{tríos}}}, \\[6pt]
+      \text{max\_triple\_support}
+        &= \max_{(o1,o2)} \!\bigl\{\sup(A,o1,o2)\bigr\}.
+      \end{aligned}
+      ```  
+    - **Ejemplo:** con soportes `[0.15, 0.25]` →  
+      ```text
+      avg_triple_support = (0.15 + 0.25) / 2 = 0.20
+      max_triple_support = 0.25
+      ```
 
 14. **sum_triple_leverage**  
-    Suma de palancas de tríos:  
-    `sup(triple) – sup(target)·sup(o1)·sup(o2)`.
+    - **Qué mide:** Suma de las **palancas** de cada trío, que cuantifican cuánto supera el soporte observado al esperado bajo independencia.  
+    - **Fórmula:**  
+      ```math
+      \text{leverage}_3(A,o1,o2)
+      = \sup(A,o1,o2)
+      - \bigl[\sup(A)\times\sup(o1)\times\sup(o2)\bigr]
+      ```  
+    - **Ejemplo:**  
+      ```
+      sup(A)=0.25, sup(B)=0.4, sup(C)=0.3, sup(A,B,C)=0.15
+      leverage = 0.15 - (0.25*0.4*0.3) = 0.15 - 0.03 = 0.12
+      ```  
+      →  
+      ```text
+      sum_triple_leverage = 0.12  (si solo hay un trío frecuente)
+      ```
 
 15. **max_triple_lift** / **avg_triple_lift**  
-    Lift máximo y medio:  
-    `sup(triple)/(sup(target)·sup(o1)·sup(o2))`.
+    - **Qué miden:**  
+        - **`max_triple_lift`:** lift máximo de los tríos frecuentes.  
+        - **`avg_triple_lift`:** lift promedio.  
+    - **Fórmula de lift:**  
+      ```math
+      \text{lift}_3(A,o1,o2)
+      = \frac{\sup(A,o1,o2)}
+             {\sup(A)\times\sup(o1)\times\sup(o2)}.
+      ```  
+    - **Ejemplo:**  
+      ```math
+      \text{lift}_3(A,B,C)
+      = \frac{0.15}{0.25 \times 0.4 \times 0.3}
+      = 5
+      ```
 
 16. **triple_coverage**  
-    Proporción de tríos frecuentes vs. todos los tríos posibles:  
-    `freq_triple_count / (cnt_rated choose 2)`.  
-    Ejemplo cnt_rated=3 → 3 posibles, 2 frecuentes → `2/3≈0.67`.
+    - **Qué mide:** Proporción de tríos frecuentes respecto al total de tríos posibles en el historial del usuario.  
+    - **Cálculo:**  
+      ```math
+      \text{triple\_coverage}
+      = \frac{\text{freq\_triple\_count}}
+             {\binom{\text{cnt\_rated}}{2}}
+      ```  
+    - **Ejemplo:** `cnt_rated = 3` → 3 tríos posibles, si 2 son frecuentes →  
+      ```text
+      triple_coverage = 2/3 ≈ 0.67
+      ```
+---
 
 ---
 
