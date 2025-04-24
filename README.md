@@ -129,3 +129,105 @@ Aqui se describe las 21 variables (features) del archivo con menos RMSE `21Featu
     Cobertura de tríos: proporción de tríos frecuentes respecto al total  
     de tríos posibles del usuario:  
     `freq_triple_count / (cnt_rated choose 2)` (0.0 si `cnt_rated < 2`).
+
+
+---
+
+# Explicación Detallada de las 21 Features de Apriori
+
+Esta guía agrupa las 21 variables en tres bloques y utiliza ejemplos y analogías para clarificar cada una.
+
+---
+
+## 1. Variables “unarias” (solo el ítem objetivo)
+
+1. **sup_target**  
+   - **Qué mide:** Popularidad de la película objetivo.  
+   - **Cálculo:** Usuarios que valoraron la película ÷ total de usuarios.  
+   - **Ejemplo:** 25 de 100 usuarios valoraron A → `sup_target = 0.25`.
+
+2. **cnt_rated**  
+   - **Qué mide:** Cuántas otras películas valoró el usuario.  
+   - **Cálculo:** Conteo de películas en el historial, excluyendo la objetivo.  
+   - **Ejemplo:** Usuario valoró A, B, C, D y objetivo A → `cnt_rated = 3`.
+
+---
+
+## 2. Variables de **pares** (target + otra película)
+
+Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
+
+3. **freq_pair_count**  
+   Número de pares frecuentes (soporte ≥ 0.2).
+
+4. **freq_pair_support_sum**  
+   Suma de soportes de cada par.  
+   _Ejemplo:_ `sup(A,B)=0.1`, `sup(A,C)=0.3` → `0.4`.
+
+5. **max_pair_support** / **min_pair_support** / **avg_pair_support**  
+   Máximo, mínimo y promedio de esos soportes.
+
+6. **sum_pair_leverage**  
+   Suma de palancas:  
+   `leverage = sup(pair) – sup(target)·sup(other)`.  
+   _Ejemplo:_  
+   - (A,B): `0.1 – (0.25·0.4) = 0.0`  
+   - (A,C): `0.3 – (0.25·0.2) = 0.25`  
+   → `sum_pair_leverage = 0.25`.
+
+7. **max_pair_leverage**  
+   El mayor leverage (0.25 en el ejemplo).
+
+8. **max_pair_confidence**  
+   Máxima confianza:  
+   `sup(pair)/sup(target)`.  
+   Ejemplo A,C: `0.3/0.25 = 1.2`.
+
+9. **avg_pair_lift** / **max_pair_lift**  
+   Lift medio y máximo:  
+   `sup(pair)/(sup(target)·sup(other))`.  
+   Ejemplo A,C: `0.3/(0.25·0.2)=6`.
+
+10. **weighted_avg_rating_pair**  
+    Pondera la nota del usuario por el soporte:  
+    `(sum sup(pair)·rating_other)/sum sup(pair)`.  
+    Ejemplo B=3,C=5: `(0.1·3 + 0.3·5)/0.4=4.5`.
+
+---
+
+## 3. Variables de **tríos** (target + dos películas)
+
+Formamos tríos como (A,B,C) con pares de películas del historial.
+
+11. **freq_triple_count**  
+    Número de tríos frecuentes (soporte ≥ 0.2).
+
+12. **freq_triple_support_sum**  
+    Suma de soportes de cada trío frecuente.
+
+13. **avg_triple_support** / **max_triple_support**  
+    Promedio y máximo de esos soportes.
+
+14. **sum_triple_leverage**  
+    Suma de palancas de tríos:  
+    `sup(triple) – sup(target)·sup(o1)·sup(o2)`.
+
+15. **max_triple_lift** / **avg_triple_lift**  
+    Lift máximo y medio:  
+    `sup(triple)/(sup(target)·sup(o1)·sup(o2))`.
+
+16. **triple_coverage**  
+    Proporción de tríos frecuentes vs. todos los tríos posibles:  
+    `freq_triple_count / (cnt_rated choose 2)`.  
+    Ejemplo cnt_rated=3 → 3 posibles, 2 frecuentes → `2/3≈0.67`.
+
+---
+
+### ¿Para qué sirve esta información?
+
+- **Support, count:** miden cuán comunes son las asociaciones.  
+- **Leverage, confidence, lift:** indican la fuerza o sorpresa de la relación.  
+- **Weighted ratings:** integran la valoración del usuario.  
+- **Coverage:** muestra la completitud de sus grupos de películas.
+
+Con estas 21 métricas, un modelo puede aprender patrones de qué ven juntos los usuarios para predecir mejor sus valoraciones.
