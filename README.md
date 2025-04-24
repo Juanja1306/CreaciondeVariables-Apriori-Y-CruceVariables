@@ -246,8 +246,13 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     = \frac{\displaystyle\sum_{X}\bigl[\sup(A,X)\times \text{rating}(X)\bigr]}
        {\displaystyle\sum_{X}\sup(A,X)}
     ```
-    - **Ejemplo:** si rating(B)=3, rating(C)=5, y soportes 0.1 y 0.3 →  
-  \(\,(0.1\cdot3 + 0.3\cdot5)/(0.1+0.3) = 4.5.\)
+    - **Ejemplo:** 
+    ```bash
+    \text{weighted\_avg\_rating\_pair}(A)
+    = \frac{0.1 \times 3 \;+\; 0.3 \times 5}{0.1 + 0.3}
+    = \frac{0.3 + 1.5}{0.4}
+    = 4.5
+    ```
 ---
 
 ## 3. Variables de **tríos** (target + dos películas)
