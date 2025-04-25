@@ -3,7 +3,7 @@ from itertools import combinations
 from math import sqrt
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor, HistGradientBoostingRegressor
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 # 1. Carga del dataset
 df = pd.read_csv(r'C:\Users\juanj\Desktop\CreaciondeVariables-Apriori-Y-CruceVariables\CSVs\ratings2comoML.csv')
@@ -118,6 +118,9 @@ hgb.fit(X_train, y_train)
 pred_hgb = hgb.predict(X_test)
 rmse_hgb = sqrt(mean_squared_error(y_test, pred_hgb))
 
+mae_rf  = mean_absolute_error(y_test, pred_rf)
+
 print(f"RMSE RandomForest: {rmse_rf:.4f}")
+print(f"MAE RandomForest: {mae_rf:.4f}")
 # print(f"RMSE HistGradientBoosting: {rmse_hgb:.4f}")
 print(f"Features: {X.shape[1]}")
