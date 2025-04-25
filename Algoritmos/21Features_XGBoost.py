@@ -5,11 +5,11 @@ import pandas as pd
 from itertools import combinations
 from math import sqrt
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 from xgboost import XGBRegressor
 
 # 1. Carga del dataset de ratings
-df = pd.read_csv('ratings2comoML.csv')
+df = pd.read_csv(r"C:\Users\juanj\Desktop\CreaciondeVariables-Apriori-Y-CruceVariables\CSVs\ratings2comoML.csv")
 
 # 2. Soporte global y sets de usuarios por película
 total_users = df['userId'].nunique()
@@ -124,5 +124,9 @@ xgb.fit(X_train, y_train)
 # 8. Evaluar RMSE
 y_pred = xgb.predict(X_test)
 rmse = sqrt(mean_squared_error(y_test, y_pred))
+
+mae_rf  = mean_absolute_error(y_test, y_pred)
+
 print(f"RMSE XGBoost (Apriori ultimate): {rmse:.4f}")
+print(f"MAE RandomForest: {mae_rf:.4f}")
 print(f"Features: {X_train.shape[1]}")
