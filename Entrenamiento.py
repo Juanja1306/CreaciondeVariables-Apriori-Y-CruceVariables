@@ -92,7 +92,7 @@ X, y = df_ult.drop('rating',axis=1), df_ult['rating']
 
 # 6. División y entrenamiento
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-rf = RandomForestRegressor(n_estimators=549, max_depth=5, random_state=42, n_jobs=-1)
+rf = RandomForestRegressor(n_estimators=30, max_depth=5, random_state=20, n_jobs=-1)
 rf.fit(X_train, y_train)
 
 # 7. Guardar el modelo entrenado

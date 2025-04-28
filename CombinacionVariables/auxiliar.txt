@@ -1,0 +1,13 @@
+Variables a usar 19:
+    
+['freq_pair_count', 'freq_pair_support_sum', 'freq_triple_count', 
+ 'freq_triple_support_sum', 'sup_target', 'cnt_rated', 'max_pair_support', 
+ 'min_pair_support', 'avg_pair_support', 'sum_pair_leverage', 'max_pair_leverage', 
+ 'max_pair_confidence', 'avg_pair_lift', 'max_pair_lift', 'weighted_avg_rating_pair', 
+ 'avg_triple_support', 'max_triple_support', 'sum_triple_leverage', 'max_triple_lift']
+
+
+Se quitan:
+ avg_triple_lift
+ triple_coverage
+
