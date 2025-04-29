@@ -141,7 +141,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
 4. **freq_pair_support_sum**  
     - **Qué mide:** Suma de los valores de soporte de cada par frecuente (A, X).  
     - **Cálculo:**
-        ```math
+        
         \[
         \text{freq\_pair\_support\_sum}(A)
         \;=\;
@@ -149,7 +149,7 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
         \sup(\{A,X\})
         \;,
         \]
-        ```
+        
     - **Ejemplo:** si `sup(A,B)=0.1` y `sup(A,C)=0.3` → `freq_pair_support_sum = 0.1 + 0.3 = 0.4`.
 
 5. **max_pair_support** / **min_pair_support** / **avg_pair_support**  
