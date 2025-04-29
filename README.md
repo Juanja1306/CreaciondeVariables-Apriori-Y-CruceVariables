@@ -196,7 +196,8 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
         - **`avg_pair_lift`:** media de todos los lifts.  
         - **`max_pair_lift`:** lift máximo.  
     - **Fórmula de lift:**  
-    ![image](https://github.com/user-attachments/assets/9367efee-3cc7-4426-859b-f98ca29971f0)
+    ![image](https://github.com/user-attachments/assets/7b947ce7-809b-4a91-a160-f5ff0816e074)
+
 
     - **Ejemplo:**  
     ![image](https://github.com/user-attachments/assets/3001caf6-3d7c-4a90-ab95-5ab4208025da)
