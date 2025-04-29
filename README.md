@@ -142,13 +142,8 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
     - **Qué mide:** Suma de los valores de soporte de cada par frecuente (A, X).  
     - **Cálculo:**
         
-        \[
-        \text{freq\_pair\_support\_sum}(A)
-        \;=\;
-        \sum_{\substack{\{A,X\}\in L_2}}
-        \sup(\{A,X\})
-        \;,
-        \]
+        ![image](https://github.com/user-attachments/assets/56518e32-a519-45a6-acab-67d2ae53485e)
+
         
     - **Ejemplo:** si `sup(A,B)=0.1` y `sup(A,C)=0.3` → `freq_pair_support_sum = 0.1 + 0.3 = 0.4`.
 
