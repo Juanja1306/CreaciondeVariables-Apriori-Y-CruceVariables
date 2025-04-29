@@ -154,6 +154,11 @@ Supongamos que el usuario valora B y C junto a A, formando pares (A,B) y (A,C).
         - **`avg_pair_support`:** soporte promedio.  
     - **Cálculos:**  
     ![image](https://github.com/user-attachments/assets/1ae887b5-3124-4f8a-80fa-e2e8a10311b0)
+    ![image](https://github.com/user-attachments/assets/dcd5e593-2d3e-4748-b9c7-62c7a52e5b11)
+    ![image](https://github.com/user-attachments/assets/2675ad93-6c3a-42b3-82d0-5e0ccb5a8cad)
+
+    ![image](https://github.com/user-attachments/assets/b121e1be-ad60-4747-be5e-0d7a290d0571)
+
 
     - **Ejemplo:** con soportes `[0.1, 0.3]`:
         - `max_pair_support = 0.3`  
