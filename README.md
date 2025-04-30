@@ -2,8 +2,8 @@
 Creamos mas variables a partir de 2 (movieId+userId) para la prediccion del Rating de peliculas
 
 ## Resultados de modelo en orden RMSE
-
 <div align="center">
+
 | Algoritmo/Modelo | RMSE |
 | :---: | :---: |
 | 21Features_RFR | 1.1863 |
@@ -25,8 +25,8 @@ Creamos mas variables a partir de 2 (movieId+userId) para la prediccion del Rati
 </div>
 
 ## Resultados de features en orden RMSE
-
 <div align="center">
+
 |   n_features |   n_estimators |   max_depth |   random_state |    RMSE |      MAE |
 |-------------:|---------------:|------------:|---------------:|--------:|---------:|
 |           19 |             10 |           5 |              5 | 1.00487 | 0.737857 |
