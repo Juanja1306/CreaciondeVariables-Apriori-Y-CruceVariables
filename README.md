@@ -25,6 +25,9 @@ Creamos mas variables a partir de 2 (movieId+userId) para la prediccion del Rati
 </div>
 
 
+## Impedimento:
+El cruce de variables utilizando el método Apriori no es viable para datasets grandes debido a la explosión combinatoria que implica generar las asociaciones entre elementos. En términos de complejidad computacional (Big-O), este problema crece exponencialmente con el número de combinaciones a realizar. Para pares, la complejidad es O(n²), mientras que para tríos aumenta a O(n³). Debido a esto, aplicar Apriori a conjuntos de datos como el de MovieLens 32M resulta ineficiente y no es factible para obtener resultados en tiempos razonables.
+
 ## Descripción de Features extraídas con Apriori
 
 Aqui se describe las 21 variables (features) del archivo con menos RMSE `21Features_RFR`.
