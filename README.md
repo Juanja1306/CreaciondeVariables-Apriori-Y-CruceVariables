@@ -2,8 +2,8 @@
 Creamos mas variables a partir de 2 (movieId+userId) para la prediccion del Rating de peliculas
 
 ## Resultados de modelo en orden RMSE
+
 <div align="center">
-    
 | Algoritmo/Modelo | RMSE |
 | :---: | :---: |
 | 21Features_RFR | 1.1863 |
@@ -25,6 +25,8 @@ Creamos mas variables a partir de 2 (movieId+userId) para la prediccion del Rati
 </div>
 
 ## Resultados de features en orden RMSE
+
+<div align="center">
 |   n_features |   n_estimators |   max_depth |   random_state |    RMSE |      MAE |
 |-------------:|---------------:|------------:|---------------:|--------:|---------:|
 |           19 |             10 |           5 |              5 | 1.00487 | 0.737857 |
@@ -33,7 +35,9 @@ Creamos mas variables a partir de 2 (movieId+userId) para la prediccion del Rati
 |           19 |             10 |          20 |              5 | 1.02922 | 0.75     |
 |           20 |             20 |          20 |             20 | 1.03    | 0.810714 |
 
-Siendo los mejores features los siguientes:
+</div>
+
+**Siendo los mejores features los siguientes:**
 'freq_pair_count', 'freq_pair_support_sum', 'freq_triple_count', 'freq_triple_support_sum', 'sup_target', 'cnt_rated', 'max_pair_support', 'min_pair_support', 'avg_pair_support', 'sum_pair_leverage', 'max_pair_leverage', 'max_pair_confidence', 'avg_pair_lift', 'max_pair_lift', 'weighted_avg_rating_pair', 'avg_triple_support', 'max_triple_support', 'sum_triple_leverage', 'max_triple_lift'
 
 ## Impedimento:
